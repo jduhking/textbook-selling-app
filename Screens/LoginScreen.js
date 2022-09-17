@@ -9,7 +9,7 @@ function LoginScreen(props){
         </ImageBackground>
     );
 }
-
+// Hi my name is James
 const styles = StyleSheet.create({
     container: {
         flex:1,

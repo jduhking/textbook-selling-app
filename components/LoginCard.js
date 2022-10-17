@@ -12,11 +12,11 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as yup from 'yup';
 
 const loginValidationSchema = yup.object().shape({
-    email: yup.string().email('Please enter valid Email').required('Email address is required'),
-    password: yup.string().min(8,({min}) => 'password must be atleast 8 characters').required('Password is a required field')
+    NetID: yup.string().required('NetID is required'),
+    password: yup.string().required('Password is a required field')
 })
 
-function LoginCard({onChangeText, formPress}){
+function LoginCard({onChangeText, formPress, navigation}){
     const [showPassword,setShowPassword] = useState(true);
 
     return(
@@ -24,19 +24,18 @@ function LoginCard({onChangeText, formPress}){
             <Image source={require('../assets/login_icon.png')} style={styles.image}/>
             <Formik
                 validationSchema={loginValidationSchema}
-                initialValues={{email:'', password: ''}}
+                initialValues={{NetID:'', password: ''}}
                 onSubmit={Values => console.log(Values)}
             >
                 {({handleChange, handleBlur, handleSubmit, values, errors, touched}) => (
                     <View style={styles.smaller_container}>
                         <AppTextInput
-                            onChangeText={handleChange('email')}
-                            placeHolder={'Email'}
-                            onBlur={handleBlur('email')}
-                            value={values.email}
-                            keyboardType={'email-address'}
+                            onChangeText={handleChange('NetID')}
+                            placeHolder={'NetID'}
+                            onBlur={handleBlur('NetID')}
+                            value={values.NetID}
                         />
-                        <ErrorMessage error={errors.email} visible={touched.email}/>
+                        <ErrorMessage error={errors.NetID} visible={touched.NetID}/>
                         <View style={styles.spacer}></View>
                         <AppTextInput
                             onChangeText={handleChange('password')}
@@ -64,6 +63,7 @@ function LoginCard({onChangeText, formPress}){
                         <View style={styles.signupTextContainer}>
                             <LoginToSignup
                                 text={"Don't have an account?"}
+                                onPress={()=> navigation.navigate('SignUp')}
                             />
                         </View>
                     </View>
@@ -84,12 +84,13 @@ const styles = StyleSheet.create({
         alignItems:'center'
 
     },
+    
     smaller_container: {
         width:'75%',
         height:'65%',
         marginTop: 20,
-
     },
+
     image: {
         width:140,
         height:110,

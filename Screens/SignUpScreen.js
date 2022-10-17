@@ -1,19 +1,21 @@
 import Reat from 'react';
 import {StyleSheet} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createNativeStackNavigator,ImageBackground} from '@react-navigation/native-stack';
 
-function SignUpScreen(props){
+function SignUpScreen({navigation}){
     return(
-        <View>
+       <ImageBackground style={styles.container} source={require('../assets/login_background.jpg')}>
             
-        </View>
+       </ImageBackground>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-
+        flex:1,
+        justifyContent:'center',
+        alignItems:'center'
     },
 })
 

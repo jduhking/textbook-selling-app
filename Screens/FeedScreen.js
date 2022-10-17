@@ -15,8 +15,8 @@ function FeedScreen(props){
                     renderItem={({item}) => <BookCard Data={item}/>}
                     keyExtractor={(item) => item.id}
                     showsVerticalScrollIndicator={false}
-                    stickyHeaderIndices={[0]}
-                    stickyHeaderHiddenOnScroll={true}
+                    //stickyHeaderIndices={[0]}
+                    //stickyHeaderHiddenOnScroll={true}
                     ListHeaderComponent={HomeHeader}
                 />
             </View>

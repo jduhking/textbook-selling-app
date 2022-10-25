@@ -1,9 +1,10 @@
-import React from 'react';
+import {useState} from 'react';
 import {Text,StyleSheet,View,Image, TextInput,TouchableOpacity} from 'react-native';
 import Constants from 'expo-constants';
 import { Feather,Ionicons } from '@expo/vector-icons';
 
-function HomeHeader({HandleSearch, onPress, profilePress, filterPress}){
+function HomeHeader({onSearch, onPress, profilePress, filterPress}){
+
     return(
         <View style={styles.container}>
             <View style={styles.subContainer}>
@@ -22,6 +23,7 @@ function HomeHeader({HandleSearch, onPress, profilePress, filterPress}){
                     <TextInput
                         style={{width:'85%', paddingLeft:5}}
                         placeholder={'Search Books...'}
+                        onChangeText={onSearch}
                     />
                     <TouchableOpacity onPress={filterPress} style={{marginLeft:4}}>
                         <Ionicons name="filter-sharp" size={24} color="black" />

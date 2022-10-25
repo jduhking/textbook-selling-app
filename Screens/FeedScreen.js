@@ -1,4 +1,4 @@
-import React from 'react';
+import {useState} from 'react';
 import {View,FlatList,StyleSheet,Text} from 'react-native';
 import BookCard from '../components/BookCard';
 import { posts } from '../Data/Data';
@@ -7,17 +7,39 @@ import HomeHeader from '../components/HomeHeader';
 
 function FeedScreen(props){
 
+    const [postsData, setPostsData] = useState(posts);
+
+    const HandleSearch = (value) => {
+        if (!value.length) return setPostsData(posts);
+        
+        const filterDataTitle = posts.filter((item) =>
+            item.title.toUpperCase().includes(value.toUpperCase())
+        );
+
+        const filterDataISBN = posts.filter((item) =>
+            item.ISBN.includes(value)
+        );
+
+        const filterDataAuthor = posts.filter((item) =>
+            item.Author.toUpperCase().includes(value.toUpperCase())
+        );
+
+        if (filterDataTitle.length) setPostsData(filterDataTitle);
+        if (filterDataISBN.length) setPostsData(filterDataISBN);
+        if (filterDataAuthor.length) setPostsData(filterDataAuthor);
+    }
+
     return(
        <View style={styles.container}>
             <View style={styles.subContainer}>
                 <FlatList
-                    data={posts}
+                    data={postsData}
                     renderItem={({item}) => <BookCard Data={item}/>}
                     keyExtractor={(item) => item.id}
                     showsVerticalScrollIndicator={false}
                     //stickyHeaderIndices={[0]}
                     //stickyHeaderHiddenOnScroll={true}
-                    ListHeaderComponent={HomeHeader}
+                    ListHeaderComponent={<HomeHeader onSearch={HandleSearch}/>}
                 />
             </View>
             <View style={{zIndex:-3, position:"absolute",top:0, bottom:0, right:0, left:0}}>

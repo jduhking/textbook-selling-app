@@ -7,8 +7,8 @@ import LoginToSignup from './LoginToSignup';
 import {Formik} from 'formik';
 import ErrorMessage from './ErrorMessage';
 import {Entypo} from '@expo/vector-icons';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
+import { createNativeStackNavigator, } from '@react-navigation/native-stack';
 import * as yup from 'yup';
 
 const loginValidationSchema = yup.object().shape({
@@ -16,16 +16,19 @@ const loginValidationSchema = yup.object().shape({
     password: yup.string().required('Password is a required field')
 })
 
-function LoginCard({onChangeText, formPress, navigation}){
+function LoginCard({onChangeText, formPress}){
     const [showPassword,setShowPassword] = useState(true);
 
+    const navigation = useNavigation();
+
     return(
+
         <View style={styles.container}>
             <Image source={require('../assets/login_icon.png')} style={styles.image}/>
             <Formik
                 validationSchema={loginValidationSchema}
                 initialValues={{NetID:'', password: ''}}
-                onSubmit={Values => console.log(Values)}
+                onSubmit={Values => navigation.navigate('Home')}
             >
                 {({handleChange, handleBlur, handleSubmit, values, errors, touched}) => (
                     <View style={styles.smaller_container}>

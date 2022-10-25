@@ -22,11 +22,11 @@ const posts = [
         title:'How to tame your dragon',
         subtitle:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         Author:'Ralph styles',
-        ISBN: '6463456743564',
+        ISBN: '4463456743564',
         Image:[
-                require('../assets/mcaren.jpg'),
-                require('../assets/mclaren3.jpg'),
-                require('../assets/mclaren6.jpg')
+                require('../assets/book1.jpg'),
+                require('../assets/book2.jpg'),
+                require('../assets/book3.png')
             ],
         price: '30',
         conditon: 'Good',
@@ -46,9 +46,9 @@ const posts = [
         Author:'Ohiani Abdulkadir',
         ISBN: '6463456743564',
         Image:[
-            require('../assets/mclaren3.jpg'),
-            require('../assets/mclaren4.jpg'),
-            require('../assets/mclaren6.jpg')
+            require('../assets/book1.jpg'),
+            require('../assets/book2.jpg'),
+            require('../assets/book3.png')
         ],
         price: '65',
         conditon: 'mild',
@@ -66,11 +66,11 @@ const posts = [
         title:'Vip no regular',
         subtitle:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         Author:'James Odebiyi',
-        ISBN: '6463456743564',
+        ISBN: '3463456743564',
         Image:[
-            require('../assets/mclaren6.jpg'),
-            require('../assets/mcaren.jpg'),
-            require('../assets/mclaren3.jpg'),
+            require('../assets/book3.png'),
+            require('../assets/book2.jpg'),
+            require('../assets/book1.jpg'),
         ],
         price: '124',
         conditon: 'Good',
@@ -88,11 +88,11 @@ const posts = [
         title:'Life after Google',
         subtitle:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         Author:'Dr Seuss',
-        ISBN: '6463456743564',
+        ISBN: '3463456743564',
         Image:[
-            require('../assets/mclaren3.jpg'),
-            require('../assets/mclaren4.jpg'),
-            require('../assets/mclaren6.jpg')
+            require('../assets/book3.png'),
+            require('../assets/book2.jpg'),
+            require('../assets/book3.png')
         ],
         price: '57',
         conditon: 'Bad',
@@ -110,11 +110,11 @@ const posts = [
         title:'Intro to Java',
         subtitle:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         Author:'Meghana Sapute',
-        ISBN: '6463456743564',
+        ISBN: '2963456743564',
         Image:[
-            require('../assets/mclaren5.jpg'),
-            require('../assets/mclaren6.jpg'),
-            require('../assets/mclaren4.jpg')
+            require('../assets/book6.jpg'),
+            require('../assets/book2.jpg'),
+            require('../assets/book3.png')
         ],
         price: '79',
         conditon: 'Good',
@@ -132,11 +132,11 @@ const posts = [
         title:'Assembly code Introduction',
         subtitle:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         Author:'John Cole',
-        ISBN: '6463456743564',
+        ISBN: '9463456743564',
         Image:[
-            require('../assets/mclaren2.jpg'),
-            require('../assets/mclaren4.jpg'),
-            require('../assets/mclaren6.jpg')
+            require('../assets/book6.jpg'),
+            require('../assets/book2.jpg'),
+            require('../assets/book3.png')
         ],
         price: '30',
         conditon: 'Mild',

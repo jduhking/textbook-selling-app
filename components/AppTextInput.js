@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import {TouchableWithoutFeedback, View,TextInput, StyleSheet} from 'react-native';
 
-function AppTextInput({onChangeText, placeHolder,formPress,onBlur,secureTextEntry,keyboardType,icon}){
+function AppTextInput({onChangeText, placeHolder,formPress,onBlur,secureTextEntry,keyboardType,icon,...otherProps}){
 
     const [textEdit, setEditText] = useState();
     let changeStyle;
@@ -23,6 +23,7 @@ function AppTextInput({onChangeText, placeHolder,formPress,onBlur,secureTextEntr
                     onBlur={onBlur}
                     secureTextEntry={secureTextEntry}
                     keyboardType={keyboardType}
+                    {...otherProps}
                 />
                 {icon ? icon : null}
             </View>

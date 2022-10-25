@@ -4,19 +4,10 @@ import { StyleSheet, Text, View} from 'react-native';
 import LoginCard from './components/LoginCard';
 import WelcomeNavigator from './Navigators/WelcomNavigator';
 import HomeScreen from './Screens/HomeScreen';
+import SignUpScreen from './Screens/SignUpScreen';
 
 export default function App() {
-
   return (
-    <WelcomeNavigator/>
+    <SignUpScreen/>
   );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+} 

@@ -22,7 +22,7 @@ function HomeHeader({onSearch, onPress, profilePress, filterPress}){
                     <Feather name="search" size={24} color="black" />
                     <TextInput
                         style={{width:'85%', paddingLeft:5}}
-                        placeholder={'Search Books...'}
+                        placeholder={'What are you looking for?'}
                         onChangeText={onSearch}
                     />
                     <TouchableOpacity onPress={filterPress} style={{marginLeft:4}}>

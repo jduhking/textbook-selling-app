@@ -1,13 +1,28 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native'
 
 import LoginCard from './components/LoginCard';
-import WelcomeNavigator from './Navigators/WelcomNavigator';
+import AuthNavigator from './Navigators/AuthNavigator';
+import BottomTabsNavigator from './Navigators/BottomTabsNavigator';
 import HomeScreen from './Screens/HomeScreen';
 import SignUpScreen from './Screens/SignUpScreen';
+import FeedScreen from './Screens/FeedScreen';
+
+// Authentication flow
+
+
+isSignedIn = false;
+
+
 
 export default function App() {
+
   return (
-    <SignUpScreen/>
+  < NavigationContainer>
+  
+    <BottomTabsNavigator/> 
+
+   </ NavigationContainer>
   );
 } 

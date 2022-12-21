@@ -9,14 +9,7 @@ function HomeHeader({onSearch, onPress, profilePress, filterPress}){
         <View style={styles.container}>
             <View style={styles.subContainer}>
                 <View style={styles.firstContainer}>
-                    <Image style={{width:100, height:50}} source={require('../assets/light_logo.png')}/>
-                    <TouchableOpacity onPress={profilePress}>
-                        <Image style={{width:55, height:55, borderRadius:30, borderWidth:2, borderColor:'white'}} source={require('../assets/junior.jpg')}/>
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.secondContainer}>
-                    <Text style={{color:'white', fontSize: 14, paddingBottom:5}}>Hello, Ohiani 👋</Text>
-                    <Text style={{color:'white', fontSize: 20, fontWeight:'bold'}}>Let's find you a book!</Text>
+                    <Image style={{width:100, height:50}} source={require('../assets/light_logo.png')}/>    
                 </View>
                 <View style={styles.searchContainer}>
                     <Feather name="search" size={24} color="black" />
@@ -43,10 +36,12 @@ const styles = StyleSheet.create({
     },
     subContainer: {
         width:'80%',
+        flexDirection: 'row',
     },
     firstContainer: {
         width:'100%',
         flexDirection:'row',
+        flex: 1,
         justifyContent:'space-between',
         paddingBottom: 15
     },
@@ -59,6 +54,7 @@ const styles = StyleSheet.create({
         height:45,
         marginBottom:15,
         flexDirection:'row',
+        flex: 2,
         backgroundColor:'#B7BBB9',
         justifyContent:'center',
         alignItems:'center',
@@ -71,3 +67,19 @@ const styles = StyleSheet.create({
 })
 
 export default HomeHeader;
+
+/*
+
+moved profile image, hello message for now
+
+       <View style={styles.secondContainer}>
+                    <Text style={{color:'white', fontSize: 14, paddingBottom:5}}>Hello, Ohiani 👋</Text>
+                    <Text style={{color:'white', fontSize: 20, fontWeight:'bold'}}>Let's find you a book!</Text>
+                </View>
+ <TouchableOpacity onPress={profilePress}>
+                        <Image style={{width:55, height:55, borderRadius:30, borderWidth:2, borderColor:'white'}} source={require('../assets/junior.jpg')}/>
+                    </TouchableOpacity>
+
+
+
+*/

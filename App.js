@@ -8,6 +8,7 @@ import BottomTabsNavigator from './Navigators/BottomTabsNavigator';
 import HomeScreen from './Screens/HomeScreen';
 import SignUpScreen from './Screens/SignUpScreen';
 import FeedScreen from './Screens/FeedScreen';
+import LoginScreen from './Screens/LoginScreen';
 
 // Authentication flow
 
@@ -23,6 +24,6 @@ export default function App() {
   
     <BottomTabsNavigator/> 
 
-   </ NavigationContainer>
+  </ NavigationContainer>
   );
 } 

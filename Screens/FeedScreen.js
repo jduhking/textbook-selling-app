@@ -33,15 +33,7 @@ function FeedScreen(props){
     return(
        <View style={styles.container}>
             <View style={styles.subContainer}>
-                <FlatList
-                    data={postsData}
-                    renderItem={({item}) => <BookCard Data={item}/>}
-                    keyExtractor={(item) => item.id}
-                    showsVerticalScrollIndicator={false}
-                    //stickyHeaderIndices={[0]}
-                    //stickyHeaderHiddenOnScroll={true}
-                    ListHeaderComponent={<HomeHeader onSearch={HandleSearch}/>}
-                />
+            <HomeHeader onSearch={HandleSearch}/>
             </View>
             <View style={{zIndex:-3, position:"absolute",top:0, bottom:0, right:0, left:0}}>
                 <View style={{width:'100%', height:'100%', backgroundColor:'#005D28'}}/>
@@ -66,3 +58,23 @@ const styles = StyleSheet.create({
 })
 
 export default FeedScreen
+
+
+// flat list is moved for now 
+
+/*
+
+
+    <FlatList
+                    data={postsData}
+                    renderItem={({item}) => <BookCard Data={item}/>}
+                    keyExtractor={(item) => item.id}
+                    showsVerticalScrollIndicator={false}
+                    //stickyHeaderIndices={[0]}
+                    //stickyHeaderHiddenOnScroll={true}
+                    ListHeaderComponent={<HomeHeader onSearch={HandleSearch}/>}
+                >
+
+
+
+*/

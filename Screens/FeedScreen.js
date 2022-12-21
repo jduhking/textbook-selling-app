@@ -38,8 +38,8 @@ function FeedScreen(props){
             <View style={{zIndex:-3, position:"absolute",top:0, bottom:0, right:0, left:0}}>
                 <View style={{width:'100%', height:'100%', backgroundColor:'#005D28'}}/>
             </View>
-            <View style={{zIndex:-1, position:"absolute",top:0, bottom:0, right:0, left:0, flexDirection:'column-reverse'}}>
-            <View style={{width:'100%',height:'65%',borderRadius:15,backgroundColor:'white'}}/>
+            <View style={{zIndex:-1, position:"absolute",top:'14%', bottom:0, right:0, left:0}}>
+            <View style={{width:'100%',height:'100%',borderRadius:1,backgroundColor:'white', flexDirection: 'column-reverse'}}/>
             </View>
             
        </View>

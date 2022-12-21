@@ -6,10 +6,11 @@ import { Feather,Ionicons } from '@expo/vector-icons';
 function HomeHeader({onSearch, onPress, profilePress, filterPress}){
 
     return(
-        <View style={styles.container}>
+      
+      <View style={styles.container}>
             <View style={styles.subContainer}>
                 <View style={styles.firstContainer}>
-                    <Image style={{width:100, height:50}} source={require('../assets/light_logo.png')}/>    
+                    <Image style={{top: '9%', right: '60%', width: '100%', height:'100%', resizeMode: 'contain'}} source={require('../assets/light_logo.png')}/>    
                 </View>
                 <View style={styles.searchContainer}>
                     <Feather name="search" size={24} color="black" />
@@ -54,7 +55,7 @@ const styles = StyleSheet.create({
         height:45,
         marginBottom:15,
         flexDirection:'row',
-        flex: 2,
+        flex: 4,
         backgroundColor:'#B7BBB9',
         justifyContent:'center',
         alignItems:'center',

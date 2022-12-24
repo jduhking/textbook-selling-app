@@ -10,7 +10,7 @@ function HomeHeader({onSearch, onPress, profilePress, filterPress}){
       <View style={styles.container}>
             <View style={styles.subContainer}>
                 <View style={styles.firstContainer}>
-                    <Image style={{top: '9%', right: '60%', width: '100%', height:'100%', resizeMode: 'contain'}} source={require('../assets/light_logo.png')}/>    
+                    <Image style={{top: '9%', right: '60%', width: '90%', height:'90%', resizeMode: 'contain'}} source={require('../assets/light_logo.png')}/>    
                 </View>
                 <View style={styles.searchContainer}>
                     <Feather name="search" size={24} color="black" />

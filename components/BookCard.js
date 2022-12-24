@@ -10,58 +10,104 @@ import CircleButton from './CircleButton';
 function BookCard({Data}){
 
     return(
-        <View style={styles.container} >
+         
             <Pressable style={styles.cardContainer}>
-                <View style={styles.imageContainer}>
-                    <Image style={styles.imageStyle} source={Data.Image[0]}/>
+           
+                <Image style={styles.imageStyle} source={Data.Image[0]}/>
+                <View style={styles.contentContainer}>
+                    <Text style={styles.author}>{Data.Author}</Text>
+
+                    <Text style={styles.title}>{Data.title}</Text>
+                    <Text style={{fontSize: 12}}>ISBN: {Data.ISBN}</Text>
+                    <Text style={{fontSize: 12}}>Condition: {Data.conditon}</Text>
+                    <View style={styles.lastContainer}>
+                    <Text style={{fontSize: 20}}>{"$" + Data.price}</Text>
+                    <AppButton text={'BUY/RENT'} width={'45%'} height={35} marginTop={3} onPress={()=> console.log('BUY/RENT')}/>
+                    </View>
                 </View>
-                <View style={{width:'65%'}}>
-                    <Text style={{fontWeight:'bold' ,fontSize:14, marginBottom:2}}>{Data.title}</Text>
-                    <Text style={{fontSize:12}}>by {Data.Author}</Text>
-                    <Text style={{marginTop: 10}}>ISBN: {Data.ISBN}</Text>
-                    <AppButton text={'BUY/RENT'} width={'100%'} height={35} marginTop={3} onPress={()=> console.log('button pressed')}/>
-                </View>  
-                <TouchableOpacity style={styles.wishList}>
-
-                </TouchableOpacity>
             </Pressable>
-            
-
-        </View>
+          
+     
     );
 }
 
+import { Dimensions } from 'react-native'
+
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
+
 const styles = StyleSheet.create({
-    container: {
-        width:'100%',
-        alignItems:'center',
-        marginBottom: Constants.statusBarHeight,
-    },
+   
     cardContainer: {
-        width:'80%',
-        flexDirection:'row',
+  
         backgroundColor:'white',
-        borderRadius: 17,
+        borderRadius: 8,
         shadowColor:'black',
         shadowRadius:15,
         shadowOpacity:0.5,
-        paddingLeft:10,
-        paddingVertical:10
+       
+        width: windowWidth * 0.4,
+        
+       
+        marginEnd: 10,
+        flexDirection: 'column',
+
+        
+        
+        
+    
     },
-    imageContainer:{
-        width:'25%',
-        height:100,
-        marginRight:10,
+
+    imageStyle: {
+
+        width: windowWidth * 0.4,
+        height: windowHeight * 0.22,
+        
+        borderTopEndRadius: 8,
+        borderTopStartRadius: 8,
+
+ 
+    },
+    contentContainer: {
+        
+        marginLeft: '3%',
+        height: windowHeight * 0.19,
+
+    },
+
+    title: {
+      
+        height: '40%',
+        fontWeight:'bold',
+        fontSize: 16, 
+        marginBottom:2,
+        marginTop: '2%',
+        paddingTop: '2%',
+        paddingLeft: '2%',
+        
         
     },
-    imageStyle: {
-        width:'100%',
-        height:'100%',
-        overflow:'hidden',
-        resizeMode:'contain',
+
+
+    author: {
+
+        fontSize: 12, 
+        marginTop: '2%',
+        paddingLeft: '2%',
+        height: '12%'
+
+
+
     },
+    lastContainer: {
+
+        flexDirection: 'row',
+        height: '40%',
+      
+    },
+
     wishList: {
-        position:'absolute',
+       
         width:30,
         height:30,
         borderRadius:17,
@@ -73,3 +119,19 @@ const styles = StyleSheet.create({
 })
 
 export default BookCard;
+
+{/*
+
+
+    <View>
+
+                    
+                    
+                   
+    </View>
+
+
+      <TouchableOpacity style={styles.wishList}>
+                </TouchableOpacity>
+
+*/}

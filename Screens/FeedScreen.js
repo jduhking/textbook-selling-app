@@ -1,10 +1,14 @@
 import {useState} from 'react';
-import {View,FlatList,StyleSheet,Text} from 'react-native';
+import {View,FlatList,StyleSheet,Text, Image, Dimensions} from 'react-native';
 import BookCard from '../components/BookCard';
 import { posts } from '../Data/Data';
 import Constants from 'expo-constants';
 import HomeHeader from '../components/HomeHeader';
 import BottomTabsNavigator from '../Navigators/BottomTabsNavigator';
+
+
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 function FeedScreen(props){
 
@@ -32,29 +36,76 @@ function FeedScreen(props){
 
     return(
        <View style={styles.container}>
-            <View style={styles.subContainer}>
-            <HomeHeader onSearch={HandleSearch}/>
+
+ 
+      
+          
+
+     
+            <View style={styles.greenBackground} >
+                <HomeHeader onSearch={HandleSearch}/>
             </View>
-            <View style={{zIndex:-3, position:"absolute",top:0, bottom:0, right:0, left:0}}>
-                <View style={{width:'100%', height:'100%', backgroundColor:'#005D28'}}/>
+
+            <View style={styles.whiteBackground}>
+
+            <View>
+            <FlatList style={styles.topBooks}
+                        data={postsData}
+                        renderItem={({ item }) => (<BookCard Data={item} />)}
+                        keyExtractor={item => item.id}
+                        horizontal={true}
+                        showsHorizontalScrollIndicator={false}
+                        
+                />
             </View>
-            <View style={{zIndex:-1, position:"absolute",top:'14%', bottom:0, right:0, left:0}}>
-            <View style={{width:'100%',height:'100%',borderRadius:1,backgroundColor:'white', flexDirection: 'column-reverse'}}/>
+       
+
+
+
             </View>
-            
-       </View>
+        </View>
+
     );
+
 }
 
 const styles = StyleSheet.create({
+
     container: {
-        alignItems:'center',
-        flex:1,
+
+        flex: 1,
+        flexDirection: 'column'
+
     },
-    subContainer: {
-        width:'100%',
-        height:'100%',
+    greenBackground: {
+
+    flex: 1,
+    backgroundColor:'#005D28',
+
+
+
     },
+
+    whiteBackground: {
+
+        flex: 5,
+        flexDirection: 'column',
+        backgroundColor:'white',
+   
+
+    },
+
+    topBooks: {
+
+        overflow: 'visible',
+        height: windowHeight * 0.45,
+        marginTop: '2%',
+        marginLeft: 10,
+        
+
+
+    }
+
 })
 
 export default FeedScreen

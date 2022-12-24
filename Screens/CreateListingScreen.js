@@ -14,7 +14,7 @@ function CreateListingScreen(){
 return(
     <View>
 
-    <Text> Create Listing Screen </Text>
+        <Text> Create Listing Screen </Text>
 
     </View>
    

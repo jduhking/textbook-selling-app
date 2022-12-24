@@ -28,7 +28,7 @@ const posts = [
                 require('../assets/book2.jpg'),
                 require('../assets/book3.png')
             ],
-        price: '30',
+        price: '$30.00',
         conditon: 'Good',
         texture:'Hardcover',
         Category: 'ECS-Computer Science',
@@ -50,7 +50,7 @@ const posts = [
             require('../assets/book2.jpg'),
             require('../assets/book3.png')
         ],
-        price: '65',
+        price: '$65.00',
         conditon: 'mild',
         texture:'paperback',
         Category: 'ECS-Computer Engineering',
@@ -94,7 +94,7 @@ const posts = [
             require('../assets/book2.jpg'),
             require('../assets/book3.png')
         ],
-        price: '57',
+        price: '$57.00',
         conditon: 'Bad',
         texture:'Hardcober',
         Category: 'ECS-Computer Science',
@@ -116,7 +116,7 @@ const posts = [
             require('../assets/book2.jpg'),
             require('../assets/book3.png')
         ],
-        price: '79',
+        price: '$79.00',
         conditon: 'Good',
         texture:'paperback',
         Category: 'ECS-Computer Science',
@@ -138,7 +138,7 @@ const posts = [
             require('../assets/book2.jpg'),
             require('../assets/book3.png')
         ],
-        price: '30',
+        price: '$30.00',
         conditon: 'Mild',
         texture:'HardCover',
         Category: 'ECS-Computer Science',

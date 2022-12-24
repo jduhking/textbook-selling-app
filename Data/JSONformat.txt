@@ -1,0 +1,36 @@
+{
+
+  "id": "1000",
+  "username": "jduhking",
+  "password": "123456",
+  "email": "jxo190003@utdallas.edu,
+  "firstName" : "James",
+  "lastName" : "Odebiyi",
+  "year": "senior",
+  "listedBooks": [
+     {
+        id:'1',
+        title:'How to tame your dragon',
+        subtitle:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        Author:'Ralph styles',
+        ISBN: '4463456743564',
+        Image:[
+                require('../assets/book1.jpg'),
+                require('../assets/book2.jpg'),
+                require('../assets/book3.png')
+            ],
+        price: '$30.00',
+        conditon: 'Good',
+        texture:'Hardcover',
+        Category: 'ECS-Computer Science',
+        userPosted: {
+                        id: '1000'
+                        name:'James',
+                        userImage: require("../assets/junior.jpg"),
+                        reviews: '22',
+                    }
+    }
+  ],
+ 
+
+}

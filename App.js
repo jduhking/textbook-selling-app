@@ -9,6 +9,7 @@ import HomeScreen from './Screens/HomeScreen';
 import SignUpScreen from './Screens/SignUpScreen';
 import FeedScreen from './Screens/FeedScreen';
 import LoginScreen from './Screens/LoginScreen';
+import RootNavigator from './Navigators/RootNavigator';
 
 // Authentication flow
 
@@ -16,13 +17,12 @@ import LoginScreen from './Screens/LoginScreen';
 isSignedIn = false;
 
 
-
 export default function App() {
 
   return (
   < NavigationContainer>
   
-    <BottomTabsNavigator/> 
+    <RootNavigator />
 
   </ NavigationContainer>
   );

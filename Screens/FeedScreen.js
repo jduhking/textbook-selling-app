@@ -1,10 +1,11 @@
 import {useState} from 'react';
-import {View,FlatList,StyleSheet,Text, Image, Dimensions} from 'react-native';
+import {View,FlatList,StyleSheet,Text, Image, Dimensions, ScrollView} from 'react-native';
 import BookCard from '../components/BookCard';
 import { posts } from '../Data/Data';
 import Constants from 'expo-constants';
 import HomeHeader from '../components/HomeHeader';
 import BottomTabsNavigator from '../Navigators/BottomTabsNavigator';
+
 
 
 const windowWidth = Dimensions.get('window').width;
@@ -47,7 +48,10 @@ function FeedScreen(props){
             </View>
 
             <View style={styles.whiteBackground}>
-
+            <ScrollView style={styles.mainView}
+                    showsVerticalScrollIndicator={false}
+                >
+            <View><Text style={ styles.category }>Top Picks For Your Major</Text></View>
             <View>
             <FlatList style={styles.topBooks}
                         data={postsData}
@@ -58,6 +62,14 @@ function FeedScreen(props){
                         
                 />
             </View>
+            <View><Text style={ styles.category }>New Listings For You</Text></View>
+            <View><Text style={ styles.category }>Browse By Major</Text></View>
+            <View><Text style={ styles.category }>Top Selling Books</Text></View>
+            <View><Text style={ styles.category }>Recently Viewed</Text></View>
+            
+            
+            </ScrollView>
+        
        
 
 
@@ -72,7 +84,7 @@ function FeedScreen(props){
 const styles = StyleSheet.create({
 
     container: {
-
+      
         flex: 1,
         flexDirection: 'column'
 
@@ -97,13 +109,31 @@ const styles = StyleSheet.create({
 
     topBooks: {
 
+       
         overflow: 'visible',
         height: windowHeight * 0.45,
         marginTop: '2%',
-        marginLeft: 10,
+       
         
 
 
+    },
+
+    category: {
+    
+        fontSize: 32, 
+        marginTop: 10, 
+        marginBottom: 2
+
+    },
+
+    mainView: {
+        
+
+        marginTop: '2%',
+        marginLeft: 8,
+        marginRight: 8,
+       
     }
 
 })

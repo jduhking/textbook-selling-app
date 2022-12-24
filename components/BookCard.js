@@ -22,7 +22,6 @@ function BookCard({Data}){
                     <Text style={{fontSize: 12}}>Condition: {Data.conditon}</Text>
                     <View style={styles.lastContainer}>
                     <Text style={{fontSize: 20}}>{"$" + Data.price}</Text>
-                    <AppButton text={'BUY/RENT'} width={'45%'} height={35} marginTop={3} onPress={()=> console.log('BUY/RENT')}/>
                     </View>
                 </View>
             </Pressable>

@@ -22,7 +22,7 @@ export default function App() {
   return (
   < NavigationContainer>
   
-    <RootNavigator />
+    <BottomTabsNavigator />
 
   </ NavigationContainer>
   );

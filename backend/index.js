@@ -1,4 +1,5 @@
 const express = require('express')
+const morgan = require('morgan')
 const mongoose = require('mongoose')
 const cors = require('cors')
 const bodyParser = require('body-parser')
@@ -11,13 +12,15 @@ const port = process.env.PORT || 4000
 
 // app
 
+
+
 app.get('/', (req,res) => {
-    res.send('Hello Word!')
+    res.send('<h1>Textbook app</h1>')
 })
 
-app.get('/login', (req,res) => {
-    res.send('<h1> Login </h1>')
-})
+
+
+
 // database
 mongoose.set('strictQuery', false)
 
@@ -31,7 +34,16 @@ mongoose.connect(
 // middlewares
 
 app.use(bodyParser.json())
+app.use(morgan(':method :url :status'))
 app.use(cors())
+
+
+// pull routes
+
+const routes = require("./routes")(express)
+
+app.use(routes)
+
 
 
 app.listen(port, () => {

@@ -10,16 +10,6 @@ const app = express()
 
 const port = process.env.PORT || 4000
 
-// app
-
-
-
-app.get('/', (req,res) => {
-    res.send('<h1>Textbook app</h1>')
-})
-
-
-
 
 // database
 mongoose.set('strictQuery', false)

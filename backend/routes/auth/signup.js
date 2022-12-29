@@ -9,7 +9,10 @@ const {
 const emailRegexp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 
 module.exports = function (router) {
-    router.get('/signup', Signup)
+    router.post('/signup', (req, res) => {
+
+        Signup(req, res)
+    })
 }
 
 async function Signup(req, res) {
@@ -17,7 +20,9 @@ async function Signup(req, res) {
     // get all the signup information
 
     let { username, email, password } = req.body
-    
+
+    console.log(req.body)
+    console.log(`username: ${username} email: ${email} password: ${password}`)
     // initialize an errors array and append anytime an error is caught
 
     let errors = []
@@ -53,7 +58,7 @@ async function Signup(req, res) {
 
     // check if the user already exists, if so then return an error that the user already exists
     // error code is 422 because the entity cannot be processed (signup didnt work)
-    User.findOne({email: email})
+     User.findOne({email: email})
         .then(user =>{
             if(user){
                 return res.status(422).json({ errors: [{

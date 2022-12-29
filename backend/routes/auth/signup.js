@@ -1,7 +1,6 @@
 const User = require('../../models/User')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
-
 const {
     createJWT,
 } = require('../../utils/auth')
@@ -10,7 +9,7 @@ const emailRegexp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-
 
 module.exports = function (router) {
     router.post('/signup', (req, res) => {
-
+       
         Signup(req, res)
     })
 }
@@ -82,9 +81,17 @@ async function Signup(req, res) {
                         user.password = hash;
                         user.save()
                             .then(response => {
+
+                                // create a token 
+                                console.log("try to make")
+                                const token = createJWT(
+                                    user._id, user.email, 120 
+                                )
+                                console.log("token made successfully")
                                 res.status(200).json({
                                     success: true,
-                                    result: response
+                                    result: response,
+                                    token: token
                                 })
                             }) // catch any errors
                             .catch(err => {

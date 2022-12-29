@@ -4,6 +4,9 @@ const jwt = require('jsonwebtoken')
 
 exports.createJWT = (email, userId, duration) => {
     // define the jwt structure
+
+
+    
     const payload = {
 
         email,
@@ -13,7 +16,7 @@ exports.createJWT = (email, userId, duration) => {
     };
 
     // return the signed token
-
+  
     return jwt.sign(payload, process.env.SECRET_TOKEN,
         {expiresIn: duration,})
 }

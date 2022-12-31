@@ -1,9 +1,9 @@
 
-import {View,FlatList,StyleSheet,Text} from 'react-native';
+import {View,FlatList,StyleSheet,Text, Button } from 'react-native';
 
 
 
-function WishList(){
+function WishList(props){
 
 
 
@@ -12,7 +12,7 @@ function WishList(){
 
 
 return(
-    <View>
+    <View style={styles.container}>
 
     <Text> Wish List Screen </Text>
 
@@ -25,5 +25,17 @@ return(
 
 
 }
+
+const styles = StyleSheet.create({
+
+    container: {
+
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+
+
+    }
+})
 
 export default WishList;

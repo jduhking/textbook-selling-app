@@ -2,40 +2,41 @@
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {Fontisto, FontAwesome5, Octicons, Feather } from '@expo/vector-icons';
-
-
-import FeedScreen from '../Screens/FeedScreen';
-import WishList from '../Screens/WishList';
-import CreateListingScreen from '../Screens/CreateListingScreen';
-import TransactionsScreen from '../Screens/TransactionsScreen';
-import AccountScreen from '../Screens/AccountScreen';
 import colors from '../components/colors';
 import { color } from 'react-native-reanimated';
 
+import AppNavigator from './AppNavigator'
+
+
+const BottomTabs = createBottomTabNavigator();
 
 function BottomTabsNavigator({navigation})
 {
 
-const BottomTabs = createBottomTabNavigator();
 
     return(
         
         <BottomTabs.Navigator screenOptions={{ headerShown: false}} >
 
         <BottomTabs.Screen name=
-        'Home' component={FeedScreen} 
+        'Feed' component={AppNavigator} 
+        initialParams={{ initialRoute: "FeedScreen"}}
         options={{ tabBarIcon: ({focused, color, size}) => 
         <Octicons name="home" size={24} color={focused ? colors.green : colors.gray} />, gestureEnabled:false, tabBarActiveTintColor: colors.green}}/>
-        <BottomTabs.Screen name='Wishlist' component={WishList} 
+        <BottomTabs.Screen name='Wishlist' component={AppNavigator} 
+        initialParams={{ initialRoute: "WishlistScreen"}}
         options={{ tabBarIcon: ({focused, color, size}) => 
         <FontAwesome5 name="heart" size={24} color={focused ? colors.green : colors.gray} />, gestureEnabled:false, tabBarActiveTintColor: colors.green}}/>
-        <BottomTabs.Screen name='Sell' component={CreateListingScreen} 
+        <BottomTabs.Screen name='Sell' component={AppNavigator} 
+        initialParams={{ initialRoute: "SellScreen"}}
         options={{ tabBarIcon: ({focused, color, size}) => 
         <Feather name="camera" size={24} color={focused ? colors.green : colors.gray} />, gestureEnabled:false, tabBarActiveTintColor: colors.green}}/>
-        <BottomTabs.Screen name='Transactions' component={TransactionsScreen} 
+        <BottomTabs.Screen name='Transactions' component={AppNavigator} 
+        initialParams={{ initialRoute: "TransactionsScreen"}}
         options={{ tabBarIcon: ({focused, color, size}) =>
         <Fontisto name="arrow-swap" size={24} color={focused ? colors.green : colors.gray} />, gestureEnabled:false, tabBarActiveTintColor: colors.green}}/>
-        <BottomTabs.Screen name='Account' component={AccountScreen} 
+        <BottomTabs.Screen name='Account' component={AppNavigator} 
+        initialParams={{ initialRoute: "AccountScreen"}}
         options={{ tabBarIcon: ({focused, color, size}) => 
         <FontAwesome5 name="user" size={24} color={focused ? colors.green : colors.gray} />, 
          gestureEnabled:false, tabBarActiveTintColor: colors.green}}/>

@@ -3,7 +3,7 @@ import {View,FlatList,StyleSheet,Text} from 'react-native';
 
 
 
-function CreateListingScreen(){
+function CreateListingScreen(props){
 
 
 
@@ -12,7 +12,7 @@ function CreateListingScreen(){
 
 
 return(
-    <View>
+    <View style={styles.container}>
 
         <Text> Create Listing Screen </Text>
 
@@ -22,8 +22,18 @@ return(
 
 
 
-
-
 }
+
+const styles = StyleSheet.create({
+
+    container: {
+
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+
+
+    }
+})
 
 export default CreateListingScreen;

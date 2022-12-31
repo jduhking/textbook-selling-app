@@ -3,27 +3,33 @@ import { StyleSheet, Text, View} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native'
 
 import LoginCard from './components/LoginCard';
-import AuthNavigator from './Navigators/AuthNavigator';
+
 import BottomTabsNavigator from './Navigators/BottomTabsNavigator';
-import HomeScreen from './Screens/HomeScreen';
-import SignUpScreen from './Screens/SignUpScreen';
-import FeedScreen from './Screens/FeedScreen';
-import LoginScreen from './Screens/LoginScreen';
-import RootNavigator from './Navigators/RootNavigator';
+import AppNavigator from './Navigators/AppNavigator'
+import AuthNavigator from './Navigators/AuthNavigator';
+
 
 // Authentication flow
 
 
-isSignedIn = false;
+isSignedIn = true;
 
 
 export default function App() {
 
   return (
   < NavigationContainer>
-  
-    <BottomTabsNavigator />
-
+    {
+    isSignedIn ? (
+      <>
+    <BottomTabsNavigator/>
+      </>
+    ) : (
+      <>
+      <AuthNavigator/>
+      </>
+    )
+    }
   </ NavigationContainer>
   );
 } 

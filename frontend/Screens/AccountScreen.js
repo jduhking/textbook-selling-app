@@ -5,7 +5,7 @@ import {View,FlatList,StyleSheet,Text} from 'react-native';
 
 
 
-function AccountScreen(){
+function AccountScreen(props){
 
 
 
@@ -14,7 +14,7 @@ function AccountScreen(){
 
 
 return(
-    <View>
+    <View style={styles.container}>
 
     <Text> Account Screen </Text>
 
@@ -27,5 +27,18 @@ return(
 
 
 }
+
+
+const styles = StyleSheet.create({
+
+    container: {
+
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+
+
+    }
+})
 
 export default AccountScreen;

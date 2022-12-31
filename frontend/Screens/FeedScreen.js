@@ -4,7 +4,7 @@ import BookCard from '../components/BookCard';
 import { posts } from '../Data/Data';
 import Constants from 'expo-constants';
 import HomeHeader from '../components/HomeHeader';
-import BottomTabsNavigator from '../Navigators/BottomTabsNavigator';
+
 
 
 

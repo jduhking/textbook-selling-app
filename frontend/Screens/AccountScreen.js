@@ -4,7 +4,6 @@
 import {View,FlatList,StyleSheet,Text} from 'react-native';
 
 
-
 function AccountScreen(props){
 
 
@@ -16,7 +15,7 @@ function AccountScreen(props){
 return(
     <View style={styles.container}>
 
-    <Text> Account Screen </Text>
+    <Text> { process.env.BACKEND_URL }</Text>
 
     </View>
    

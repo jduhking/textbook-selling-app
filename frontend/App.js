@@ -12,7 +12,7 @@ import AuthNavigator from './Navigators/AuthNavigator';
 // Authentication flow
 
 
-isSignedIn = true;
+isSignedIn = false;
 
 
 export default function App() {

@@ -6,7 +6,7 @@ const {
 } = require('../../utils/auth')
 
 module.exports = function (router) {
-    router.get('/login', (req, res) => {
+    router.post('/login', (req, res) => {
         Login(req, res)
     })
 }
@@ -16,11 +16,11 @@ async function Login(req, res) {
 
     // get login fields from req
 
-    let { email, password } = req.body;
+    let { username, password } = req.body;
 
     // check to see if the email is in the data base
 
-    User.findOne({ email: email }).then(user => {
+    User.findOne({ username: username }).then(user => {
 
         // if the user is not found then return error message
 
@@ -49,10 +49,6 @@ async function Login(req, res) {
                     120
                     )
 
-    
-
-                
-
                 jwt.verify(access_token, 
                     process.env.SECRET_TOKEN, (err, decoded) => {
                         if(err) { // return an error if there is an error that arises during verification
@@ -61,8 +57,9 @@ async function Login(req, res) {
                         }
 
                         if(decoded) { // if the token is valid return a success message
+                            
                             return res.status(200).json({
-                                sucess: true,
+                                success: true,
                                 token: access_token,
                                 message: user
                             })

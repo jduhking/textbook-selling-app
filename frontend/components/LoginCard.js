@@ -10,13 +10,59 @@ import {Entypo} from '@expo/vector-icons';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator, } from '@react-navigation/native-stack';
 import * as yup from 'yup';
+import axios from 'axios'
 
 const loginValidationSchema = yup.object().shape({
     NetID: yup.string().required('NetID is required'),
     password: yup.string().required('Password is a required field')
 })
 
+// attempt to login
+
+async function Login (values) {
+
+   
+    let res = undefined
+    try {
+        
+        const BACKEND_URL = process.env.BACKEND_URL
+        const LOGIN_ROUTE = process.env.LOGIN_ROUTE
+        console.log(BACKEND_URL + LOGIN_ROUTE)
+        // attempt to login by sending axios post request to backend
+
+                await axios
+                    .post(BACKEND_URL + LOGIN_ROUTE, {
+
+                            username : values.NetID,
+                            password : values.password
+
+                    }) // if it works then show the response
+                    .then(function (response) {
+
+                       res = response
+                  
+
+                    }) // if it doesnt work then show the error
+                    .catch(function(error) { 
+
+                       res = error.response
+                     
+
+                    })
+    } catch(error){
+
+        // if there is an error report error message
+
+        res = error
+    }
+    
+    return res
+}
+
+
 function LoginCard({onChangeText, formPress}){
+
+
     const [showPassword,setShowPassword] = useState(true);
 
     const navigation = useNavigation();
@@ -28,7 +74,39 @@ function LoginCard({onChangeText, formPress}){
             <Formik
                 validationSchema={loginValidationSchema}
                 initialValues={{NetID:'', password: ''}}
-                onSubmit={Values => navigation.navigate('Home')}
+                onSubmit={
+                    async (values, actions) => {
+
+                        
+
+                    // set submitting as true
+                    actions.setSubmitting(true)
+                    // perform call to to login
+
+                    console.log("Login")
+
+                    let response = await Login(values)
+
+
+                        if(response.status < 299 ){
+    
+                            console.log(`User ${response.data.message.username} logged in`)
+    
+                        }else {
+                        
+                           
+                            console.log(response.data.errors)
+    
+                        }
+
+                            // after submission set it to false
+                            actions.setSubmitting(false)
+                    
+                    
+                    }
+                  
+
+                }
             >
                 {({handleChange, handleBlur, handleSubmit, values, errors, touched}) => (
                     <View style={styles.smaller_container}>
@@ -66,7 +144,7 @@ function LoginCard({onChangeText, formPress}){
                         <View style={styles.signupTextContainer}>
                             <LoginToSignup
                                 text={"Don't have an account?"}
-                                onPress={()=> navigation.navigate('SignUp')}
+                                onPress={()=> navigation.navigate('Signup')}
                             />
                         </View>
                     </View>

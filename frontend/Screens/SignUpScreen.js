@@ -6,10 +6,11 @@ import AppTextInput from '../components/AppTextInput'
 import ErrorMessage from '../components/ErrorMessage';
 import AppButton from '../components/AppButton';
 import {Entypo} from '@expo/vector-icons';
+import axios from "axios"
 
 const signUpValidationSchema = yup.object().shape({
-    Email: yup.string().email('Please enter a valid email').required('Email is required'),
-    Username: yup.string().required('Username is required'),
+    email: yup.string().email('Please enter a valid email').required('Email is required'),
+    username: yup.string().required('Username is required'),
     password: yup.string().matches(/\w*[a-z]\w*/,  "Password must have a small letter")
     .matches(/\w*[A-Z]\w*/,  "Password must have a capital letter")
     .matches(/\d/, "Password must have a number")
@@ -25,34 +26,103 @@ function SignUpScreen(props){
     const [showPassword,setShowPassword] = useState(true);
     const [showConfirmPassword,setShowConfirmPassword] = useState(true);
 
+    async function SignUp(values) {
+
+        let res = undefined
+        
+        try {
+
+            // perform axios post request to server
+
+            const BACKEND_URL = process.env.BACKEND_URL
+            const SIGNUP_ROUTE = process.env.SIGNUP_ROUTE
+
+            await axios
+              .post(BACKEND_URL + SIGNUP_ROUTE, {
+
+                username : values.username,
+                email : values.email,
+                password : values.password
+
+              })
+              .then(function(response){
+
+                res = response
+
+              })
+              .catch( function(error){
+
+                res = error
+              })
+        }catch(error){
+
+            res = error
+
+        }
+
+        return res
+
+    }
     return(
        <ImageBackground style={styles.background} source={require('../assets/login_background.jpg')}>
             <View style={styles.container}>
                 <Image style={styles.logo} source={require('../assets/login_icon.png')}/>
                 <Formik
                     validationSchema={signUpValidationSchema}
-                    initialValues={{Username:'', Email:'', password:'', confirmPassword:''}}
-                    onSubmit={Values => console.log(Values)}
+                    initialValues={{username:'', email:'', password:'', confirmPassword:''}}
+                    onSubmit={ 
+
+                        async (values, actions ) => {
+
+                        // begin submitting
+
+                        actions.setSubmitting(true)
+
+                        // perform api call to signup route
+
+                        let response =  await SignUp(values)
+
+                        if(response.status < 299){
+
+                            // it was a success
+                            username = response.data.result.username
+                            email = response.data.result.email
+                            password = response.data.result.password
+
+                            console.log(`User ${username} created with email: ${email} and password: ${password}`)
+
+                        } else {
+
+                            console.log(response.data.errors)
+
+                        }
+
+                        // stop submitting
+                
+                        actions.setSubmitting(false)           
+
+                    }
+                       }
                 >
                     {({handleChange, handleBlur, handleSubmit, values, errors, touched}) => (
                         <View style={{width:'100%'}}>
 
                             <AppTextInput
                                 placeHolder={'Username'}
-                                onChangeText={handleChange('Username')}
-                                onBlur={handleBlur('Username')}
-                                value={values.Username}
+                                onChangeText={handleChange('username')}
+                                onBlur={handleBlur('username')}
+                                value={values.username}
                             />
-                            <ErrorMessage error={errors.Username} visible={touched.Username}/>
+                            <ErrorMessage error={errors.username} visible={touched.username}/>
                             <View style={styles.spacer}></View>
                             <AppTextInput
                                 placeHolder={'Email'}
-                                onChangeText={handleChange('Email')}
-                                onBlur={handleBlur('Email')}
+                                onChangeText={handleChange('email')}
+                                onBlur={handleBlur('email')}
                                 keyboardType={'email-address'}
-                                value={values.Email}
+                                value={values.email}
                             />
-                            <ErrorMessage error={errors.Email} visible={touched.Email}/>
+                            <ErrorMessage error={errors.email} visible={touched.email}/>
                             <View style={styles.spacer}></View>
                             <AppTextInput
                                 onChangeText={handleChange('password')}
@@ -70,7 +140,7 @@ function SignUpScreen(props){
                             <View style={styles.spacer}></View>
                             <AppTextInput
                                 onChangeText={handleChange('confirmPassword')}
-                                placeHolder={'confirm Password'}
+                                placeHolder={'Confirm Password'}
                                 onBlur={handleBlur('confirmPassword')}
                                 value={values.confirmPassword}
                                 secureTextEntry={showPassword}

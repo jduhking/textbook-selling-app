@@ -1,16 +1,23 @@
-import {useState} from 'react';
+import React, {useState} from 'react';
 import {StyleSheet,View,Text,TextInput,Image, TouchableWithoutFeedback,TouchableOpacity} from 'react-native';
-import AppTextInput from './AppTextInput';
-import AppButton from './AppButton';
-import LinkButton from './LinkButton';
-import LoginToSignup from './LoginToSignup';
+import AppTextInput from '../AppTextInput';
+import AppButton from '../AppButton';
+import LinkButton from '../LinkButton';
+import LoginToSignup from '../LoginToSignup';
 import {Formik} from 'formik';
-import ErrorMessage from './ErrorMessage';
+import ErrorMessage from '../ErrorMessage';
 import {Entypo} from '@expo/vector-icons';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator, } from '@react-navigation/native-stack';
 import * as yup from 'yup';
 import axios from 'axios'
+
+   // state
+
+   import { useSelector, useDispatch } from 'react-redux'
+   import { login, isLogin } from './LoginSlice'
+
+
 
 const loginValidationSchema = yup.object().shape({
     NetID: yup.string().required('NetID is required'),
@@ -22,12 +29,13 @@ const loginValidationSchema = yup.object().shape({
 async function Login (values) {
 
    
-    let res = undefined
+    let res = { status: "undefined" }
+
     try {
         
         const BACKEND_URL = process.env.BACKEND_URL
         const LOGIN_ROUTE = process.env.LOGIN_ROUTE
-        console.log(BACKEND_URL + LOGIN_ROUTE)
+        
         // attempt to login by sending axios post request to backend
 
                 await axios
@@ -39,14 +47,15 @@ async function Login (values) {
                     }) // if it works then show the response
                     .then(function (response) {
 
+
                        res = response
                   
 
                     }) // if it doesnt work then show the error
                     .catch(function(error) { 
 
-                       res = error.response
-                     
+                       console.log("There is no connection to the backend")
+
 
                     })
     } catch(error){
@@ -67,43 +76,61 @@ function LoginCard({onChangeText, formPress}){
 
     const navigation = useNavigation();
 
+
+    // state variables
+
+    const isLoggedin = useSelector(isLogin) // login state variable 
+    const dispatch = useDispatch() // only way to update the login state
+
     return(
 
         <View style={styles.container}>
-            <Image source={require('../assets/login_icon.png')} style={styles.image}/>
+            <Image source={require('../../assets/login_icon.png')} style={styles.image}/>
+            <Text style={styles.signupTextContainer}>{isLoggedin.toString()}</Text>
             <Formik
                 validationSchema={loginValidationSchema}
                 initialValues={{NetID:'', password: ''}}
                 onSubmit={
                     async (values, actions) => {
 
-                        
-
+                    
+                    console.log("Attempting to log in...")
                     // set submitting as true
                     actions.setSubmitting(true)
                     // perform call to to login
 
-                    console.log("Login")
+                    Login(values).then((response) => {
 
-                    let response = await Login(values)
+                        if(response.status != 'undefined' && response.status < 299 ){
 
+                            // log the user in
 
-                        if(response.status < 299 ){
+                            dispatch(login())
     
                             console.log(`User ${response.data.message.username} logged in`)
     
-                        }else {
+                        }else if(response.status > 299) {
                         
                            
                             console.log(response.data.errors)
     
                         }
+                        else{
+                            console.log("Connection to the backend could not be made :(")
+                        }
+
+                    }).catch((error) => { 
+
+                        console.log(error)
+
+                    })
 
                             // after submission set it to false
                             actions.setSubmitting(false)
                     
                     
                     }
+
                   
 
                 }

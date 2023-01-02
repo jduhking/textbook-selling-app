@@ -1,6 +1,6 @@
 import react from 'react';
 import {View, StyleSheet,ImageBackground} from 'react-native';
-import LoginCard from '../components/LoginCard';
+import LoginCard from '../components/Login/LoginCard';
 
 function LoginScreen(props){
     return(

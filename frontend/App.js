@@ -1,35 +1,15 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View} from 'react-native';
-import { NavigationContainer } from '@react-navigation/native'
 
-import LoginCard from './components/LoginCard';
-
-import BottomTabsNavigator from './Navigators/BottomTabsNavigator';
-import AppNavigator from './Navigators/AppNavigator'
-import AuthNavigator from './Navigators/AuthNavigator';
-
-
-// Authentication flow
-
-
-isSignedIn = false;
-
+import NavigationProvider from './Navigators/NavigationProvider'
+import React from "react"
+import { store } from './store'
+import { Provider } from  'react-redux'
 
 export default function App() {
 
   return (
-  < NavigationContainer>
-    {
-    isSignedIn ? (
-      <>
-    <BottomTabsNavigator/>
-      </>
-    ) : (
-      <>
-      <AuthNavigator/>
-      </>
-    )
-    }
-  </ NavigationContainer>
+ <Provider store={store} >
+    <NavigationProvider />
+ </Provider>
   );
 } 
+

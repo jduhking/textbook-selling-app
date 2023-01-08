@@ -14,9 +14,9 @@ import axios from 'axios'
 
    // state
 
-   import { useSelector, useDispatch } from 'react-redux'
-   import { login, isLogin } from './LoginSlice'
-
+import { useSelector, useDispatch } from 'react-redux'
+import { login, isLogin } from './LoginSlice'
+import { retrieve, store } from '../../utils/Storage'
 
 
 const loginValidationSchema = yup.object().shape({
@@ -24,14 +24,14 @@ const loginValidationSchema = yup.object().shape({
     password: yup.string().required('Password is a required field')
 })
 
+// for authentication
+
 // attempt to login
 
 async function Login (values) {
 
    
     let res = { status: "undefined" }
-
-    try {
         
         const BACKEND_URL = process.env.BACKEND_URL
         const LOGIN_ROUTE = process.env.LOGIN_ROUTE
@@ -54,28 +54,24 @@ async function Login (values) {
                     }) // if it doesnt work then show the error
                     .catch(function(error) { 
 
-                       console.log("There is no connection to the backend")
+                      
+                        res = error.toJSON()
+                        console.log(res)
+                       
 
 
                     })
-    } catch(error){
 
-        // if there is an error report error message
-
-        res = error
-    }
-    
     return res
 }
 
 
 function LoginCard({onChangeText, formPress}){
 
-
+    
     const [showPassword,setShowPassword] = useState(true);
 
     const navigation = useNavigation();
-
 
     // state variables
 
@@ -86,7 +82,6 @@ function LoginCard({onChangeText, formPress}){
 
         <View style={styles.container}>
             <Image source={require('../../assets/login_icon.png')} style={styles.image}/>
-            <Text style={styles.signupTextContainer}>{isLoggedin.toString()}</Text>
             <Formik
                 validationSchema={loginValidationSchema}
                 initialValues={{NetID:'', password: ''}}
@@ -101,13 +96,21 @@ function LoginCard({onChangeText, formPress}){
 
                     Login(values).then((response) => {
 
-                        if(response.status != 'undefined' && response.status < 299 ){
-
+                        if(response.status != 'null' && response.status < 299 ){
+                            console.log(response.status != 'null' && response.status < 299 )
+                            console.log("Logged in")
+                            console.log(response.status)
                             // log the user in
 
-                            dispatch(login())
+                            dispatch(login()) // this changes the login state
     
                             console.log(`User ${response.data.message.username} logged in`)
+
+                            // add jwt to the local storage
+
+                            console.log(response.data.message.token)
+
+                            //store('token',  )
     
                         }else if(response.status > 299) {
                         

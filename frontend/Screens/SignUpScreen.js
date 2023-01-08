@@ -8,6 +8,12 @@ import AppButton from '../components/AppButton';
 import {Entypo} from '@expo/vector-icons';
 import axios from "axios"
 
+   // state
+
+   import { useSelector, useDispatch } from 'react-redux'
+   import { login, isLogin } from '../components/Login/LoginSlice'
+   import { retrieve, store } from '../components/Login/LoginSlice'
+
 const signUpValidationSchema = yup.object().shape({
     email: yup.string().email('Please enter a valid email').required('Email is required'),
     username: yup.string().required('Username is required'),
@@ -25,6 +31,13 @@ function SignUpScreen(props){
 
     const [showPassword,setShowPassword] = useState(true);
     const [showConfirmPassword,setShowConfirmPassword] = useState(true);
+
+    // state 
+
+    // state variables
+
+    const isLoggedin = useSelector(isLogin) // login state variable 
+    const dispatch = useDispatch() // only way to update the login state
 
     async function SignUp(values) {
 
@@ -80,23 +93,31 @@ function SignUpScreen(props){
 
                         // perform api call to signup route
 
-                        let response =  await SignUp(values)
+                        SignUp(values)
+                        .then((response) => {
 
-                        if(response.status < 299){
+                            if(response.status < 299){
 
-                            // it was a success
-                            username = response.data.result.username
-                            email = response.data.result.email
-                            password = response.data.result.password
+                                // it was a success
+                                username = response.data.result.username
+                                email = response.data.result.email
+                                password = response.data.result.password
+    
+                                console.log(`User ${username} created with email: ${email} and password: ${password}`)
+    
+                                dispatch(login()) // login the user after signup
+    
+                            } else {
+    
+                                console.log(response.data.errors)
+    
+                            }
 
-                            console.log(`User ${username} created with email: ${email} and password: ${password}`)
-
-                        } else {
-
-                            console.log(response.data.errors)
-
-                        }
-
+                        }).catch((error) => // catch any errors 
+                        {
+                            console.log(error)
+                        })
+                       
                         // stop submitting
                 
                         actions.setSubmitting(false)           

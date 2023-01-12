@@ -1,14 +1,16 @@
 import react from 'react';
 import {View, StyleSheet,ImageBackground} from 'react-native';
-import LoginCard from '../components/Login/LoginCard';
+import ForgotPassword from '../components/ForgotPass/ForgotPassword';
 
-function LoginScreen(props){
+
+function ForgotPasswordScreen(props){
     return(
         <ImageBackground style={styles.container} source={require('../assets/login_background.jpg')}>
-            <LoginCard/>
+            <ForgotPassword />
         </ImageBackground>
     );
 }
+
 
 const styles = StyleSheet.create({
     container: {
@@ -18,4 +20,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default LoginScreen;
+export default ForgotPasswordScreen;

@@ -7,6 +7,7 @@ import ErrorMessage from '../components/ErrorMessage';
 import AppButton from '../components/AppButton';
 import {Entypo} from '@expo/vector-icons';
 import axios from "axios"
+import BackLink from '../components/BackLink';
 
    // state
 
@@ -164,9 +165,9 @@ function SignUpScreen(props){
                                 placeHolder={'Confirm Password'}
                                 onBlur={handleBlur('confirmPassword')}
                                 value={values.confirmPassword}
-                                secureTextEntry={showPassword}
+                                secureTextEntry={showConfirmPassword}
                                 icon={
-                                    <TouchableOpacity onPress={() => {showConfirmPassword((prev) => !prev)}} style={{paddingLeft:4}}>
+                                    <TouchableOpacity onPress={() => {setShowConfirmPassword((prev) => !prev)}} style={{paddingLeft:4}}>
                                         {showConfirmPassword ? <Entypo name="eye-with-line" size={22} color="black" />  : <Entypo name="eye" size={22} color="black" />}
                                     </TouchableOpacity>
                                 }
@@ -177,6 +178,11 @@ function SignUpScreen(props){
                                 text={'SIGN UP'}
                                 onPress={handleSubmit}
                             />
+                            < BackLink 
+                                text='Back'
+                                onPress={() => {
+                                    props.navigation.navigate('Login')
+                                }} />
                         </View>
                     )}
 

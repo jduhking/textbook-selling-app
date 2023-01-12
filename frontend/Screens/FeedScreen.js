@@ -140,22 +140,3 @@ const styles = StyleSheet.create({
 
 export default FeedScreen
 
-
-// flat list is moved for now 
-
-/*
-
-
-    <FlatList
-                    data={postsData}
-                    renderItem={({item}) => <BookCard Data={item}/>}
-                    keyExtractor={(item) => item.id}
-                    showsVerticalScrollIndicator={false}
-                    //stickyHeaderIndices={[0]}
-                    //stickyHeaderHiddenOnScroll={true}
-                    ListHeaderComponent={<HomeHeader onSearch={HandleSearch}/>}
-                >
-
-
-
-*/

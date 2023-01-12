@@ -164,6 +164,7 @@ function LoginCard({onChangeText, formPress}){
                         <View style={{flexDirection:'row-reverse', width:'100%'}}>
                             <LinkButton
                                 text={'Forgot Password?'}
+                                onPress={() => navigation.navigate('ForgotPassword')}
                             />
                         </View>
                         <View style={styles.spacer}></View>

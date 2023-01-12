@@ -17,13 +17,8 @@ return(
 
     <Text> { process.env.BACKEND_URL }</Text>
 
-    </View>
-   
+    </View>  
 )
-
-
-
-
 
 }
 

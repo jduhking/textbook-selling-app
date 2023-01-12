@@ -25,8 +25,6 @@ function BookCard({Data}){
                     </View>
                 </View>
             </Pressable>
-          
-     
     );
 }
 

@@ -5,5 +5,8 @@ import SignUpScreen from './SignUpScreen'
 import TransactionsScreen from './TransactionsScreen'
 import WishList from './WishList'
 import CreateListingScreen from './CreateListingScreen'
+import ForgotPasswordScreen from './ForgotPasswordScreen'
+import EnterPinScreen from './EnterPinScreen'
 
-export { AccountScreen, FeedScreen, LoginScreen, SignUpScreen, WishList, TransactionsScreen, CreateListingScreen  }
+
+export { AccountScreen, FeedScreen, LoginScreen, SignUpScreen, WishList, TransactionsScreen, CreateListingScreen, ForgotPasswordScreen, EnterPinScreen }

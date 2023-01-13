@@ -42,22 +42,31 @@ app.listen(port, () => {
 })
 
 const transporter = nodemailer.createTransport({
-
-    host: 'smtp.sendgrid.net',
-    port: 587,
+  
+     
+    host: 'smtp.gmail.com',
+    port: 465,
     auth: {
 
-        user: 'apikey',
-        pass: process.env.SENDGRID_API_KEY
+        user: 'jamesbodebiyi@gmail.com',
+        pass: 'Bab0debiyi_84'
     }
 })
+transporter.verify(function(error, success){
 
+    if(error){
+        console.log(error)
+    } else {
+        console.log('Server is ready for sending emails!')
+    }
+})
 transporter.sendMail({
 
     from: 'noreply@utdbooks.com',
     to: 'jamesbodebiyi@gmail.com',
     subject: 'Test Message',
     text: 'This is a test email',
+    html: '<b>Hey there!</b>'
     }, function(error, info){
 
         if(error){

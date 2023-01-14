@@ -42,16 +42,16 @@ app.listen(port, () => {
 })
 
 const transporter = nodemailer.createTransport({
-  
-     
-    host: 'smtp.gmail.com',
-    port: 465,
+
+    host: 'smtp.sendgrid.net',
+    port: 587,
     auth: {
 
-        user: 'jamesbodebiyi@gmail.com',
-        pass: 'Bab0debiyi_84'
+        user: 'apikey',
+        pass: process.env.SENDGRID_API_KEY
     }
 })
+
 transporter.verify(function(error, success){
 
     if(error){
